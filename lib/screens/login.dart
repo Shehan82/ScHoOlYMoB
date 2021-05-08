@@ -155,12 +155,48 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 Container(
-                  height: 40,
+                  height: 50,
                   width: 250,
                   alignment: Alignment.center,
-                  color: Colors.green,
+                  decoration: BoxDecoration(
+                      color: Color(0xff08fcec),
+                      borderRadius: BorderRadius.circular(30)),
                   margin: EdgeInsets.only(top: 30, bottom: 30),
-                  child: Text("Login"),
+                  child: isTeacher
+                      ? Text("Login as a teacher",
+                          style: GoogleFonts.itim(
+                              fontSize: 18, fontWeight: FontWeight.w800))
+                      : Text("Login as a student",
+                          style: GoogleFonts.itim(
+                              fontSize: 18, fontWeight: FontWeight.w800)),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have an account? ",
+                  style: GoogleFonts.itim(color: Colors.white, fontSize: 17),
+                ),
+                InkWell(
+                  onTap: () {
+                    print("bksfnsj");
+                  },
+                  child: Container(
+                    child: Text(
+                      "Register now",
+                      style: GoogleFonts.itim(
+                          color: Color(0xff08fcec),
+                          fontSize: 19,
+                          fontWeight: FontWeight.w800),
+                    ),
+                  ),
                 )
               ],
             ),
