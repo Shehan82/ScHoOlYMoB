@@ -12,24 +12,16 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // resizeToAvoidBottomInset: false,
       backgroundColor: primaryColor,
-      body: Column(
+      body: ListView(
+        physics: ClampingScrollPhysics(),
         children: [
           SizedBox(
             height: 60,
           ),
           Container(
-            height: 150,
-            margin: EdgeInsets.only(top: 20, bottom: 20, left: 70, right: 70),
-            decoration: BoxDecoration(
-                // color: Colors.black.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(40),
-                // shape: BoxShape.circle,
-                image: DecorationImage(
-                    fit: BoxFit.contain,
-                    image: AssetImage('assets/images/school2.png'))),
-          ),
-          Container(
+            alignment: Alignment.center,
             child: Text(
               "ScHoOlYMoB",
               style: GoogleFonts.itim(
@@ -39,7 +31,18 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 50),
+            height: 150,
+            margin: EdgeInsets.only(top: 30, bottom: 20, left: 70, right: 70),
+            decoration: BoxDecoration(
+                // color: Colors.black.withOpacity(0.3),
+                borderRadius: BorderRadius.circular(40),
+                // shape: BoxShape.circle,
+                image: DecorationImage(
+                    fit: BoxFit.contain,
+                    image: AssetImage('assets/images/school2.png'))),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 30, right: 20, left: 20),
             width: 340,
             color: Colors.black.withOpacity(0.2),
             child: Column(
@@ -109,22 +112,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.white),
                     decoration: InputDecoration(
                         prefixIcon: Icon(
-                          Icons.search,
+                          Icons.mail_outline,
                           color: Colors.grey,
                         ),
-                        suffixIcon: Icon(
-                          Icons.settings,
-                          color: Colors.grey,
-                        ),
-                        contentPadding: EdgeInsets.only(top: 12),
+                        contentPadding: EdgeInsets.only(top: 8),
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
                         // errorBorder: InputBorder.none,
                         disabledBorder: InputBorder.none,
-                        hintText: 'Search pet to adopt',
-                        hintStyle: GoogleFonts.raleway(
-                            fontSize: 15, fontWeight: FontWeight.w500)),
+                        hintText: 'Email',
+                        hintStyle: GoogleFonts.itim(
+                            fontSize: 20, fontWeight: FontWeight.w500)),
                   ),
                 ),
                 Container(
@@ -141,22 +140,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.white),
                     decoration: InputDecoration(
                         prefixIcon: Icon(
-                          Icons.search,
+                          Icons.lock_outline,
                           color: Colors.grey,
                         ),
-                        suffixIcon: Icon(
-                          Icons.settings,
-                          color: Colors.grey,
-                        ),
-                        contentPadding: EdgeInsets.only(top: 12),
+                        contentPadding: EdgeInsets.only(top: 8),
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
                         // errorBorder: InputBorder.none,
                         disabledBorder: InputBorder.none,
-                        hintText: 'Search pet to adopt',
-                        hintStyle: GoogleFonts.raleway(
-                            fontSize: 15, fontWeight: FontWeight.w500)),
+                        hintText: 'Password',
+                        hintStyle: GoogleFonts.itim(
+                            fontSize: 20, fontWeight: FontWeight.w500)),
                   ),
                 ),
                 Container(
