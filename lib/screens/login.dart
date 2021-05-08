@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
         physics: ClampingScrollPhysics(),
         children: [
           SizedBox(
-            height: 60,
+            height: 40,
           ),
           Container(
             alignment: Alignment.center,
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     image: AssetImage('assets/images/school2.png'))),
           ),
           Container(
-            margin: EdgeInsets.only(top: 30, right: 20, left: 20),
+            margin: EdgeInsets.only(top: 10, right: 20, left: 20),
             width: 340,
             color: Colors.black.withOpacity(0.2),
             child: Column(
@@ -70,7 +70,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Text(
                             "Students",
                             style: GoogleFonts.itim(
-                                fontSize: 20, color: Colors.white),
+                                fontSize: 20,
+                                color: isTeacher
+                                    ? Colors.white.withOpacity(0.4)
+                                    : Colors.white),
                           ),
                         ),
                       ),
@@ -92,7 +95,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: 170,
                           child: Text("Teachers",
                               style: GoogleFonts.itim(
-                                  fontSize: 20, color: Colors.white)),
+                                  fontSize: 20,
+                                  color: isTeacher
+                                      ? Colors.white
+                                      : Colors.white.withOpacity(0.4))),
                         ),
                       )
                     ],
@@ -161,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: BoxDecoration(
                       color: Color(0xff08fcec),
                       borderRadius: BorderRadius.circular(30)),
-                  margin: EdgeInsets.only(top: 30, bottom: 30),
+                  margin: EdgeInsets.only(top: 30, bottom: 10),
                   child: isTeacher
                       ? Text("Login as a teacher",
                           style: GoogleFonts.itim(
@@ -169,12 +175,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       : Text("Login as a student",
                           style: GoogleFonts.itim(
                               fontSize: 18, fontWeight: FontWeight.w800)),
-                )
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 20),
+                  child: Text(
+                    "Forgot password",
+                    style: GoogleFonts.itim(
+                        color: Color(0xff08fcec),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800),
+                  ),
+                ),
               ],
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 35,
           ),
           Container(
             child: Row(
@@ -182,7 +198,8 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Text(
                   "Don't have an account? ",
-                  style: GoogleFonts.itim(color: Colors.white, fontSize: 17),
+                  style: GoogleFonts.itim(
+                      color: Colors.white.withOpacity(0.4), fontSize: 17),
                 ),
                 InkWell(
                   onTap: () {
