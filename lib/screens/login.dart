@@ -44,7 +44,9 @@ class _LoginScreenState extends State<LoginScreen> {
           Container(
             margin: EdgeInsets.only(top: 10, right: 20, left: 20),
             width: 340,
-            color: Colors.black.withOpacity(0.2),
+            decoration: BoxDecoration(
+                color: Colors.white70.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(30)),
             child: Column(
               children: [
                 Container(
