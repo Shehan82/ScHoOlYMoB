@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "460901583577",
+    "project_id": "schoolymob",
+    "storage_bucket": "schoolymob.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460901583577:android:4b54217e3fe14f3ad40cc8",
+        "android_client_info": {
+          "package_name": "com.example.schoolymob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460901583577-3jl9ghkmja6hqmh5anqvlde4nf2abe4d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8jp6DsgBhNixc6Qzo2Z4zYOMwl8eHT0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460901583577-3jl9ghkmja6hqmh5anqvlde4nf2abe4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

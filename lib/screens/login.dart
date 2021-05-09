@@ -9,6 +9,9 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isTeacher = false;
+  TextEditingController emailTEC = new TextEditingController();
+  TextEditingController passwordTEC = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
         physics: ClampingScrollPhysics(),
         children: [
           SizedBox(
-            height: MediaQuery.of(context).size.height / 40,
+            height: 40,
           ),
           Container(
             alignment: Alignment.center,
@@ -31,12 +34,8 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height / 5.5,
-            margin: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height / 20,
-                bottom: MediaQuery.of(context).size.height / 35,
-                left: 70,
-                right: 70),
+            height: 150,
+            margin: EdgeInsets.only(top: 30, bottom: 20, left: 70, right: 70),
             decoration: BoxDecoration(
                 // color: Colors.black.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(40),
@@ -47,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Container(
             margin: EdgeInsets.only(top: 10, right: 30, left: 30),
-            width: 320,
+            width: 340,
             decoration: BoxDecoration(
                 color: Colors.white70.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(30)),
@@ -60,7 +59,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          print(MediaQuery.of(context).size.height);
                           setState(() {
                             isTeacher = false;
                           });
@@ -116,9 +114,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.4),
                       borderRadius: BorderRadius.circular(20)),
-                  width: 340,
+                  width: 320,
                   height: 45,
-                  child: TextField(
+                  child: TextFormField(
+                    validator: (val) {
+                      return RegExp(
+                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(val)
+                          ? null
+                          : "please enter the valid email";
+                    },
+                    controller: emailTEC,
                     style: GoogleFonts.raleway(
                         fontSize: 15,
                         fontWeight: FontWeight.w700,
@@ -146,9 +152,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.4),
                       borderRadius: BorderRadius.circular(20)),
-                  width: 340,
+                  width: 320,
                   height: 45,
-                  child: TextField(
+                  child: TextFormField(
+                    validator: (val) {
+                      return val.length > 6
+                          ? null
+                          : "Please provide passowrd greater than 6";
+                    },
+                    controller: passwordTEC,
                     style: GoogleFonts.raleway(
                         fontSize: 15,
                         fontWeight: FontWeight.w700,
@@ -201,7 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height / 20,
+            height: 35,
           ),
           Container(
             child: Row(
@@ -228,7 +240,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 )
               ],
             ),
-          )
+          ),
+          SizedBox(
+            height: 35,
+          ),
         ],
       ),
     );
