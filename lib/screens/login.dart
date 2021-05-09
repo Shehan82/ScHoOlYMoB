@@ -107,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Container(
                   margin: EdgeInsets.only(top: 40, right: 20, left: 20),
                   decoration: BoxDecoration(
-                      color: secondayrColor,
+                      color: Colors.black.withOpacity(0.4),
                       borderRadius: BorderRadius.circular(20)),
                   width: 340,
                   height: 45,
@@ -129,13 +129,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         disabledBorder: InputBorder.none,
                         hintText: 'Email',
                         hintStyle: GoogleFonts.itim(
-                            fontSize: 20, fontWeight: FontWeight.w500)),
+                            color: Colors.grey,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500)),
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: 30, right: 20, left: 20),
                   decoration: BoxDecoration(
-                      color: secondayrColor,
+                      color: Colors.black.withOpacity(0.4),
                       borderRadius: BorderRadius.circular(20)),
                   width: 340,
                   height: 45,
@@ -157,7 +159,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         disabledBorder: InputBorder.none,
                         hintText: 'Password',
                         hintStyle: GoogleFonts.itim(
-                            fontSize: 20, fontWeight: FontWeight.w500)),
+                            color: Colors.grey,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500)),
                   ),
                 ),
                 Container(
@@ -165,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 250,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      color: Color(0xff08fcec),
+                      color: Color(0xff35b5ad),
                       borderRadius: BorderRadius.circular(30)),
                   margin: EdgeInsets.only(top: 30, bottom: 10),
                   child: isTeacher
@@ -181,7 +185,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Text(
                     "Forgot password",
                     style: GoogleFonts.itim(
-                        color: Color(0xff08fcec),
+                        color: Color(0xff35b5ad),
                         fontSize: 16,
                         fontWeight: FontWeight.w800),
                   ),
@@ -209,7 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       "Register now",
                       style: GoogleFonts.itim(
-                          color: Color(0xff08fcec),
+                          color: Color(0xff35b5ad),
                           fontSize: 19,
                           fontWeight: FontWeight.w800),
                     ),
