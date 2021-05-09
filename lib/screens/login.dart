@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:schoolymob/configuration.dart';
+import 'package:schoolymob/screens/medium.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -197,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => LoginScreen()))
+                                          builder: (context) => MediumScreen()))
                                 }
                             });
                   },
