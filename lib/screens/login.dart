@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:schoolymob/configuration.dart';
@@ -11,6 +12,8 @@ class _LoginScreenState extends State<LoginScreen> {
   bool isTeacher = false;
   TextEditingController emailTEC = new TextEditingController();
   TextEditingController passwordTEC = new TextEditingController();
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -183,21 +186,28 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontWeight: FontWeight.w500)),
                   ),
                 ),
-                Container(
-                  height: 50,
-                  width: 250,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Color(0xff35b5ad),
-                      borderRadius: BorderRadius.circular(30)),
-                  margin: EdgeInsets.only(top: 30, bottom: 10),
-                  child: isTeacher
-                      ? Text("Login as a teacher",
-                          style: GoogleFonts.itim(
-                              fontSize: 18, fontWeight: FontWeight.w800))
-                      : Text("Login as a student",
-                          style: GoogleFonts.itim(
-                              fontSize: 18, fontWeight: FontWeight.w800)),
+                GestureDetector(
+                  onTap: () {
+                    FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        email: "shehanSandeepa82@gmail.com",
+                        password: "12345fdfdfd");
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 250,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        color: Color(0xff35b5ad),
+                        borderRadius: BorderRadius.circular(30)),
+                    margin: EdgeInsets.only(top: 30, bottom: 10),
+                    child: isTeacher
+                        ? Text("Login as a teacher",
+                            style: GoogleFonts.itim(
+                                fontSize: 18, fontWeight: FontWeight.w800))
+                        : Text("Login as a student",
+                            style: GoogleFonts.itim(
+                                fontSize: 18, fontWeight: FontWeight.w800)),
+                  ),
                 ),
                 Container(
                   margin: EdgeInsets.only(bottom: 20),
