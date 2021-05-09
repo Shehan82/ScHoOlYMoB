@@ -188,9 +188,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    FirebaseAuth.instance.createUserWithEmailAndPassword(
-                        email: "shehanSandeepa82@gmail.com",
-                        password: "12345fdfdfd");
+                    FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: emailTEC.text, password: passwordTEC.text)
+                        .then((value) => {
+                              if (value != null)
+                                {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginScreen()))
+                                }
+                            });
                   },
                   child: Container(
                     height: 50,
