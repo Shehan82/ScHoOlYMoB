@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
         physics: ClampingScrollPhysics(),
         children: [
           SizedBox(
-            height: 40,
+            height: MediaQuery.of(context).size.height / 40,
           ),
           Container(
             alignment: Alignment.center,
@@ -31,8 +31,12 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Container(
-            height: 150,
-            margin: EdgeInsets.only(top: 30, bottom: 20, left: 70, right: 70),
+            height: MediaQuery.of(context).size.height / 5.5,
+            margin: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height / 20,
+                bottom: MediaQuery.of(context).size.height / 35,
+                left: 70,
+                right: 70),
             decoration: BoxDecoration(
                 // color: Colors.black.withOpacity(0.3),
                 borderRadius: BorderRadius.circular(40),
@@ -42,8 +46,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     image: AssetImage('assets/images/school2.png'))),
           ),
           Container(
-            margin: EdgeInsets.only(top: 10, right: 20, left: 20),
-            width: 340,
+            margin: EdgeInsets.only(top: 10, right: 30, left: 30),
+            width: 320,
             decoration: BoxDecoration(
                 color: Colors.white70.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(30)),
@@ -56,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       GestureDetector(
                         onTap: () {
+                          print(MediaQuery.of(context).size.height);
                           setState(() {
                             isTeacher = false;
                           });
@@ -68,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           alignment: Alignment.center,
                           height: 50,
-                          width: 170,
+                          width: 160,
                           child: Text(
                             "Students",
                             style: GoogleFonts.itim(
@@ -94,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           alignment: Alignment.center,
                           // color: Colors.red,
                           height: 50,
-                          width: 170,
+                          width: 160,
                           child: Text("Teachers",
                               style: GoogleFonts.itim(
                                   fontSize: 20,
@@ -196,7 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           SizedBox(
-            height: 35,
+            height: MediaQuery.of(context).size.height / 20,
           ),
           Container(
             child: Row(
