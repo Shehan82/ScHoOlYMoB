@@ -23,7 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         physics: ClampingScrollPhysics(),
         children: [
           SizedBox(
-            height: 40,
+            height: 20,
           ),
           Container(
             alignment: Alignment.center,
@@ -35,17 +35,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   fontWeight: FontWeight.w600),
             ),
           ),
-          Container(
-            height: 150,
-            margin: EdgeInsets.only(top: 30, bottom: 20, left: 70, right: 70),
-            decoration: BoxDecoration(
-                // color: Colors.black.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(40),
-                // shape: BoxShape.circle,
-                image: DecorationImage(
-                    fit: BoxFit.contain,
-                    image: AssetImage('assets/images/school2.png'))),
+          SizedBox(
+            height: 30,
           ),
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.symmetric(vertical: 20),
+            // color: Colors.amber,
+            child: Text(
+              "SignUp",
+              style: GoogleFonts.itim(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white),
+            ),
+          ),
+          // Container(
+          //   height: 150,
+          //   margin: EdgeInsets.only(top: 30, bottom: 20, left: 70, right: 70),
+          //   decoration: BoxDecoration(
+          //       // color: Colors.black.withOpacity(0.3),
+          //       borderRadius: BorderRadius.circular(40),
+          //       // shape: BoxShape.circle,
+          //       image: DecorationImage(
+          //           fit: BoxFit.contain,
+          //           image: AssetImage('assets/images/school2.png'))),
+          // ),
           Container(
             margin: EdgeInsets.only(top: 10, right: 30, left: 30),
             width: 340,
@@ -117,6 +132,53 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       Container(
                         margin: EdgeInsets.only(top: 40, right: 20, left: 20),
+                        width: 320,
+                        height: 70,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: TextFormField(
+                          validator: (val) {
+                            return RegExp(
+                                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                    .hasMatch(val)
+                                ? null
+                                : "please enter the valid email";
+                          },
+                          controller: emailTEC,
+                          style: GoogleFonts.itim(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white),
+                          decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.black.withOpacity(0.4),
+                              prefixIcon: Icon(
+                                Icons.mail_outline,
+                                color: Colors.grey,
+                              ),
+                              contentPadding: EdgeInsets.only(
+                                  left: 2, top: 2, bottom: 2, right: 20),
+                              // isDense: true,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide(
+                                  width: 0,
+                                  style: BorderStyle.none,
+                                ),
+                              ),
+                              // focusedBorder: InputBorder.none,
+                              // enabledBorder: InputBorder.none,
+                              // // errorBorder: InputBorder.none,
+                              // disabledBorder: InputBorder.none,
+                              hintText: 'User Name',
+                              hintStyle: GoogleFonts.itim(
+                                  color: Colors.grey,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500)),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: 10, right: 20, left: 20),
                         width: 320,
                         height: 70,
                         decoration: BoxDecoration(

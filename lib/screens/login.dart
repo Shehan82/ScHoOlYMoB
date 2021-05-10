@@ -40,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
         physics: ClampingScrollPhysics(),
         children: [
           SizedBox(
-            height: 40,
+            height: 20,
           ),
           Container(
             alignment: Alignment.center,
