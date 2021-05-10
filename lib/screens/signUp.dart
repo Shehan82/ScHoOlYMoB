@@ -15,6 +15,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool isTeacher = false;
   TextEditingController emailTEC = new TextEditingController();
   TextEditingController passwordTEC = new TextEditingController();
+  TextEditingController keyTEC = new TextEditingController();
+  TextEditingController userNameTEC = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -147,7 +149,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       ? null
                                       : "please enter the valid email";
                                 },
-                                controller: emailTEC,
+                                controller: keyTEC,
                                 style: GoogleFonts.itim(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w700,
@@ -196,7 +198,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ? null
                                 : "please enter the valid email";
                           },
-                          controller: emailTEC,
+                          controller: userNameTEC,
                           style: GoogleFonts.itim(
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
