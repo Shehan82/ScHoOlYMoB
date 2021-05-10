@@ -204,7 +204,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               filled: true,
                               fillColor: Colors.black.withOpacity(0.4),
                               prefixIcon: Icon(
-                                Icons.mail_outline,
+                                Icons.lock_outline_rounded,
                                 color: Colors.grey,
                               ),
                               contentPadding: EdgeInsets.only(

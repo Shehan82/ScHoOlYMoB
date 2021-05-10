@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:schoolymob/screens/login.dart';
 
@@ -35,10 +36,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   fontWeight: FontWeight.w600),
             ),
           ),
-
+          SizedBox(
+            height: isTeacher ? 0 : 30,
+          ),
           Container(
             alignment: Alignment.center,
-            margin: EdgeInsets.symmetric(vertical: 20),
+            margin: EdgeInsets.only(top: isTeacher ? 10 : 20, bottom: 20),
             // color: Colors.amber,
             child: Text(
               "SignUp",
@@ -153,7 +156,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     filled: true,
                                     fillColor: Colors.black.withOpacity(0.4),
                                     prefixIcon: Icon(
-                                      Icons.mail_outline,
+                                      Icons.vpn_key_outlined,
                                       color: Colors.grey,
                                     ),
                                     contentPadding: EdgeInsets.only(
@@ -170,7 +173,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     // enabledBorder: InputBorder.none,
                                     // // errorBorder: InputBorder.none,
                                     // disabledBorder: InputBorder.none,
-                                    hintText: 'User Name',
+                                    hintText: 'Teacher\'s Key',
                                     hintStyle: GoogleFonts.itim(
                                         color: Colors.grey,
                                         fontSize: 20,
@@ -202,7 +205,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               filled: true,
                               fillColor: Colors.black.withOpacity(0.4),
                               prefixIcon: Icon(
-                                Icons.mail_outline,
+                                FontAwesomeIcons.user,
                                 color: Colors.grey,
                               ),
                               contentPadding: EdgeInsets.only(
