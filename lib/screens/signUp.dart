@@ -1,36 +1,19 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:schoolymob/configuration.dart';
-import 'package:schoolymob/screens/medium.dart';
-import 'package:schoolymob/screens/signUp.dart';
+import 'package:schoolymob/screens/login.dart';
 
-class LoginScreen extends StatefulWidget {
+import '../configuration.dart';
+
+class SignUpScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final formKey = GlobalKey<FormState>();
   bool isTeacher = false;
   TextEditingController emailTEC = new TextEditingController();
   TextEditingController passwordTEC = new TextEditingController();
-
-  final FirebaseAuth auth = FirebaseAuth.instance;
-
-  signMeIn() {
-    FirebaseAuth.instance
-        .signInWithEmailAndPassword(
-            email: emailTEC.text, password: passwordTEC.text)
-        .then((value) => {
-              if (value != null)
-                {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => MediumScreen()))
-                }
-            });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -230,7 +213,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 GestureDetector(
                   onTap: () {
                     if (formKey.currentState.validate()) {
-                      signMeIn();
+                      // signMeIn();
                     }
                   },
                   child: Container(
@@ -277,10 +260,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => SignUpScreen()));
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()));
                   },
                   child: Container(
                     child: Text(
