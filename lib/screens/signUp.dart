@@ -35,9 +35,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   fontWeight: FontWeight.w600),
             ),
           ),
-          SizedBox(
-            height: 30,
-          ),
+
           Container(
             alignment: Alignment.center,
             margin: EdgeInsets.symmetric(vertical: 20),
@@ -130,8 +128,59 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   key: formKey,
                   child: Column(
                     children: [
+                      isTeacher
+                          ? Container(
+                              margin:
+                                  EdgeInsets.only(top: 40, right: 20, left: 20),
+                              width: 320,
+                              height: 70,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: TextFormField(
+                                validator: (val) {
+                                  return RegExp(
+                                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                          .hasMatch(val)
+                                      ? null
+                                      : "please enter the valid email";
+                                },
+                                controller: emailTEC,
+                                style: GoogleFonts.itim(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white),
+                                decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.black.withOpacity(0.4),
+                                    prefixIcon: Icon(
+                                      Icons.mail_outline,
+                                      color: Colors.grey,
+                                    ),
+                                    contentPadding: EdgeInsets.only(
+                                        left: 2, top: 2, bottom: 2, right: 20),
+                                    // isDense: true,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                      borderSide: BorderSide(
+                                        width: 0,
+                                        style: BorderStyle.none,
+                                      ),
+                                    ),
+                                    // focusedBorder: InputBorder.none,
+                                    // enabledBorder: InputBorder.none,
+                                    // // errorBorder: InputBorder.none,
+                                    // disabledBorder: InputBorder.none,
+                                    hintText: 'User Name',
+                                    hintStyle: GoogleFonts.itim(
+                                        color: Colors.grey,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500)),
+                              ),
+                            )
+                          : Container(),
                       Container(
-                        margin: EdgeInsets.only(top: 40, right: 20, left: 20),
+                        margin: EdgeInsets.only(
+                            top: isTeacher ? 10 : 40, right: 20, left: 20),
                         width: 320,
                         height: 70,
                         decoration: BoxDecoration(
