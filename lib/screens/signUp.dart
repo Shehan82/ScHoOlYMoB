@@ -17,6 +17,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController passwordTEC = new TextEditingController();
   TextEditingController keyTEC = new TextEditingController();
   TextEditingController userNameTEC = new TextEditingController();
+
+  bool obsecure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -289,6 +291,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         width: 320,
                         height: 70,
                         child: TextFormField(
+                          obscureText: obsecure,
                           validator: (val) {
                             return val.length > 6
                                 ? null
@@ -303,9 +306,36 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               filled: true,
                               fillColor: Colors.black.withOpacity(0.4),
                               prefixIcon: Icon(
-                                Icons.mail_outline,
+                                Icons.lock_outline,
                                 color: Colors.grey,
                               ),
+                              suffixIcon: obsecure
+                                  ? GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          obsecure = !obsecure;
+                                        });
+                                      },
+                                      child: Icon(
+                                        // Icons.remove_red_eye_outlined,
+                                        FontAwesomeIcons.eye,
+                                        size: 20,
+                                        color: Colors.grey,
+                                      ),
+                                    )
+                                  : GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          obsecure = !obsecure;
+                                        });
+                                      },
+                                      child: Icon(
+                                        // Icons.remove_red_eye_outlined,
+                                        FontAwesomeIcons.eyeSlash,
+                                        size: 20,
+                                        color: Colors.grey,
+                                      ),
+                                    ),
                               contentPadding: EdgeInsets.only(
                                   left: 2, top: 2, bottom: 2, right: 20),
                               // isDense: true,
@@ -341,10 +371,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         borderRadius: BorderRadius.circular(30)),
                     margin: EdgeInsets.only(top: 10, bottom: 10),
                     child: isTeacher
-                        ? Text("Login as a teacher",
+                        ? Text("SignUp as a teacher",
                             style: GoogleFonts.itim(
                                 fontSize: 18, fontWeight: FontWeight.w800))
-                        : Text("Login as a student",
+                        : Text("SignUp as a student",
                             style: GoogleFonts.itim(
                                 fontSize: 18, fontWeight: FontWeight.w800)),
                   ),
