@@ -10,6 +10,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final formKey = GlobalKey<FormState>();
   bool isTeacher = false;
   TextEditingController emailTEC = new TextEditingController();
   TextEditingController passwordTEC = new TextEditingController();
@@ -113,94 +114,126 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 40, right: 20, left: 20),
-                  decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.4),
-                      borderRadius: BorderRadius.circular(20)),
-                  width: 320,
-                  height: 45,
-                  child: TextFormField(
-                    validator: (val) {
-                      return RegExp(
-                                  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                              .hasMatch(val)
-                          ? null
-                          : "please enter the valid email";
-                    },
-                    controller: emailTEC,
-                    style: GoogleFonts.raleway(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white),
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(
-                          Icons.mail_outline,
-                          color: Colors.grey,
+                Form(
+                  key: formKey,
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(top: 40, right: 20, left: 20),
+                        width: 320,
+                        height: 70,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: TextFormField(
+                          validator: (val) {
+                            return RegExp(
+                                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                    .hasMatch(val)
+                                ? null
+                                : "please enter the valid email";
+                          },
+                          controller: emailTEC,
+                          style: GoogleFonts.raleway(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white),
+                          decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.black.withOpacity(0.4),
+                              prefixIcon: Icon(
+                                Icons.mail_outline,
+                                color: Colors.grey,
+                              ),
+                              contentPadding: EdgeInsets.only(
+                                  left: 2, top: 2, bottom: 2, right: 20),
+                              // isDense: true,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide(
+                                  width: 0,
+                                  style: BorderStyle.none,
+                                ),
+                              ),
+                              // focusedBorder: InputBorder.none,
+                              // enabledBorder: InputBorder.none,
+                              // // errorBorder: InputBorder.none,
+                              // disabledBorder: InputBorder.none,
+                              hintText: 'Email',
+                              hintStyle: GoogleFonts.itim(
+                                  color: Colors.grey,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500)),
                         ),
-                        contentPadding: EdgeInsets.only(top: 8),
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        // errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        hintText: 'Email',
-                        hintStyle: GoogleFonts.itim(
-                            color: Colors.grey,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500)),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 30, right: 20, left: 20),
-                  decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.4),
-                      borderRadius: BorderRadius.circular(20)),
-                  width: 320,
-                  height: 45,
-                  child: TextFormField(
-                    validator: (val) {
-                      return val.length > 6
-                          ? null
-                          : "Please provide passowrd greater than 6";
-                    },
-                    controller: passwordTEC,
-                    style: GoogleFonts.raleway(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white),
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(
-                          Icons.lock_outline,
-                          color: Colors.grey,
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                          top: 10,
+                          right: 20,
+                          left: 20,
                         ),
-                        contentPadding: EdgeInsets.only(top: 8),
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        // errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        hintText: 'Password',
-                        hintStyle: GoogleFonts.itim(
-                            color: Colors.grey,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500)),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20)),
+                        width: 320,
+                        height: 70,
+                        child: TextFormField(
+                          validator: (val) {
+                            return val.length > 6
+                                ? null
+                                : "Please provide passowrd greater than 6";
+                          },
+                          controller: passwordTEC,
+                          style: GoogleFonts.raleway(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white),
+                          decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.black.withOpacity(0.4),
+                              prefixIcon: Icon(
+                                Icons.mail_outline,
+                                color: Colors.grey,
+                              ),
+                              contentPadding: EdgeInsets.only(
+                                  left: 2, top: 2, bottom: 2, right: 20),
+                              // isDense: true,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide(
+                                  width: 0,
+                                  style: BorderStyle.none,
+                                ),
+                              ),
+                              // focusedBorder: InputBorder.none,
+                              // enabledBorder: InputBorder.none,
+                              // // errorBorder: InputBorder.none,
+                              // disabledBorder: InputBorder.none,
+                              hintText: 'Password',
+                              hintStyle: GoogleFonts.itim(
+                                  color: Colors.grey,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500)),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 GestureDetector(
                   onTap: () {
-                    FirebaseAuth.instance
-                        .signInWithEmailAndPassword(
-                            email: emailTEC.text, password: passwordTEC.text)
-                        .then((value) => {
-                              if (value != null)
-                                {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => MediumScreen()))
-                                }
-                            });
+                    if (formKey.currentState.validate()) {
+                      FirebaseAuth.instance
+                          .signInWithEmailAndPassword(
+                              email: emailTEC.text, password: passwordTEC.text)
+                          .then((value) => {
+                                if (value != null)
+                                  {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                MediumScreen()))
+                                  }
+                              });
+                    }
                   },
                   child: Container(
                     height: 50,
@@ -209,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: BoxDecoration(
                         color: Color(0xff35b5ad),
                         borderRadius: BorderRadius.circular(30)),
-                    margin: EdgeInsets.only(top: 30, bottom: 10),
+                    margin: EdgeInsets.only(top: 10, bottom: 10),
                     child: isTeacher
                         ? Text("Login as a teacher",
                             style: GoogleFonts.itim(
