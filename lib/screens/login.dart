@@ -17,6 +17,19 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final FirebaseAuth auth = FirebaseAuth.instance;
 
+  signMeIn() {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+            email: emailTEC.text, password: passwordTEC.text)
+        .then((value) => {
+              if (value != null)
+                {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => MediumScreen()))
+                }
+            });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 : "please enter the valid email";
                           },
                           controller: emailTEC,
-                          style: GoogleFonts.raleway(
+                          style: GoogleFonts.itim(
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
                               color: Colors.white),
@@ -182,7 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 : "Please provide passowrd greater than 6";
                           },
                           controller: passwordTEC,
-                          style: GoogleFonts.raleway(
+                          style: GoogleFonts.itim(
                               fontSize: 15,
                               fontWeight: FontWeight.w700,
                               color: Colors.white),
@@ -220,19 +233,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 GestureDetector(
                   onTap: () {
                     if (formKey.currentState.validate()) {
-                      FirebaseAuth.instance
-                          .signInWithEmailAndPassword(
-                              email: emailTEC.text, password: passwordTEC.text)
-                          .then((value) => {
-                                if (value != null)
-                                  {
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                MediumScreen()))
-                                  }
-                              });
+                      signMeIn();
                     }
                   },
                   child: Container(
