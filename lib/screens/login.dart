@@ -19,16 +19,18 @@ class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
 
   signMeIn() {
-    FirebaseAuth.instance
-        .signInWithEmailAndPassword(
-            email: emailTEC.text, password: passwordTEC.text)
-        .then((value) => {
-              if (value != null)
-                {
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => MediumScreen()))
-                }
-            });
+    if (formKey.currentState.validate()) {
+      FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: emailTEC.text, password: passwordTEC.text)
+          .then((value) => {
+                if (value != null)
+                  {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => MediumScreen()))
+                  }
+              });
+    }
   }
 
   @override
@@ -229,9 +231,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    if (formKey.currentState.validate()) {
-                      signMeIn();
-                    }
+                    signMeIn();
                   },
                   child: Container(
                     height: 50,

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,10 +14,27 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final formKey = GlobalKey<FormState>();
   bool isTeacher = false;
+  String key = "blaaa";
   TextEditingController emailTEC = new TextEditingController();
   TextEditingController passwordTEC = new TextEditingController();
   TextEditingController keyTEC = new TextEditingController();
   TextEditingController userNameTEC = new TextEditingController();
+
+  teachersSignUp() {}
+
+  String keyValidation(val) {
+    FirebaseFirestore.instance
+        .collection("key")
+        .doc("key1")
+        .get()
+        .then((value) {
+      setState(() {
+        key = value.get("key");
+      });
+    });
+
+    return key == val ? null : "Key doesn't match!!!";
+  }
 
   bool obsecure = true;
   @override
@@ -145,11 +163,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   borderRadius: BorderRadius.circular(20)),
                               child: TextFormField(
                                 validator: (val) {
-                                  return RegExp(
-                                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                          .hasMatch(val)
-                                      ? null
-                                      : "please enter the valid email";
+                                  return keyValidation(val);
                                 },
                                 controller: keyTEC,
                                 style: GoogleFonts.itim(
