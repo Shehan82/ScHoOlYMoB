@@ -41,20 +41,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           ),
           SizedBox(
-            height: isTeacher ? 0 : 30,
+            height: isTeacher ? 40 : 90,
           ),
-          Container(
-            alignment: Alignment.center,
-            margin: EdgeInsets.only(top: isTeacher ? 10 : 20, bottom: 20),
-            // color: Colors.amber,
-            child: Text(
-              "SignUp",
-              style: GoogleFonts.itim(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.white),
-            ),
-          ),
+          // Container(
+          //   alignment: Alignment.center,
+          //   margin: EdgeInsets.only(top: isTeacher ? 10 : 20, bottom: 20),
+          //   // color: Colors.amber,
+          //   child: Text(
+          //     "SignUp",
+          //     style: GoogleFonts.itim(
+          //         fontSize: 30,
+          //         fontWeight: FontWeight.w700,
+          //         color: Colors.white),
+          //   ),
+          // ),
           // Container(
           //   height: 150,
           //   margin: EdgeInsets.only(top: 30, bottom: 20, left: 70, right: 70),
@@ -369,7 +369,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     decoration: BoxDecoration(
                         color: Color(0xff35b5ad),
                         borderRadius: BorderRadius.circular(30)),
-                    margin: EdgeInsets.only(top: 10, bottom: 10),
+                    margin: EdgeInsets.only(top: 10, bottom: 40),
                     child: isTeacher
                         ? Text("SignUp as a teacher",
                             style: GoogleFonts.itim(
@@ -379,16 +379,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 fontSize: 18, fontWeight: FontWeight.w800)),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 20),
-                  child: Text(
-                    "Forgot password",
-                    style: GoogleFonts.itim(
-                        color: Color(0xff35b5ad),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w800),
-                  ),
-                ),
+                // Container(
+                //   margin: EdgeInsets.only(bottom: 20),
+                //   child: Text(
+                //     "Forgot password",
+                //     style: GoogleFonts.itim(
+                //         color: Color(0xff35b5ad),
+                //         fontSize: 16,
+                //         fontWeight: FontWeight.w800),
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -400,7 +400,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Don't have an account? ",
+                  "Already have an account? ",
                   style: GoogleFonts.itim(
                       color: Colors.white.withOpacity(0.4), fontSize: 17),
                 ),
@@ -411,7 +411,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   child: Container(
                     child: Text(
-                      "Register now",
+                      "LogIn now",
                       style: GoogleFonts.itim(
                           color: Color(0xff35b5ad),
                           fontSize: 19,
