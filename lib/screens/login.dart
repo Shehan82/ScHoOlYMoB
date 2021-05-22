@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,6 +31,30 @@ class _LoginScreenState extends State<LoginScreen> {
                         MaterialPageRoute(builder: (context) => MediumScreen()))
                   }
               });
+    }
+  }
+
+  teacherSignIn() {
+    if (formKey.currentState.validate()) {
+      FirebaseFirestore.instance
+          .collection("teachers")
+          .where("email", isEqualTo: emailTEC.text)
+          .get()
+          .then((value) {
+        if (value.docs[0].get("userName") != null) {
+          FirebaseAuth.instance
+              .signInWithEmailAndPassword(
+                  email: emailTEC.text, password: passwordTEC.text)
+              .then((value) {
+            if (value != null) {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => MediumScreen()));
+            }
+          });
+        }
+      }).catchError((e) {
+        print(e);
+      });
     }
   }
 
@@ -231,7 +256,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    signMeIn();
+                    // signMeIn();
+                    teacherSignIn();
                   },
                   child: Container(
                     height: 50,

@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:schoolymob/screens/login.dart';
+import 'package:schoolymob/screens/medium.dart';
 
 import '../configuration.dart';
 
@@ -20,7 +22,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController keyTEC = new TextEditingController();
   TextEditingController userNameTEC = new TextEditingController();
 
-  teachersSignUp() {}
+  teachersSignUp() {
+    Map<String, String> teacherDetails = {
+      "email": emailTEC.text,
+      "userName": userNameTEC.text
+    };
+    if (key == keyTEC.text) {
+      FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: emailTEC.text, password: passwordTEC.text)
+          .then((value) {
+        print("iam in then block");
+        if (value != null) {
+          print("iam in value block");
+          FirebaseFirestore.instance.collection("teachers").add(teacherDetails);
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => MediumScreen()));
+        }
+      });
+    }
+  }
 
   String keyValidation(val) {
     FirebaseFirestore.instance
@@ -208,11 +229,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             borderRadius: BorderRadius.circular(20)),
                         child: TextFormField(
                           validator: (val) {
-                            return RegExp(
-                                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                    .hasMatch(val)
+                            return val.length > 3
                                 ? null
-                                : "please enter the valid email";
+                                : "please enter userName greater than 3 charcters!";
                           },
                           controller: userNameTEC,
                           style: GoogleFonts.itim(
@@ -373,7 +392,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 GestureDetector(
                   onTap: () {
                     if (formKey.currentState.validate()) {
-                      // signMeIn();
+                      teachersSignUp();
                     }
                   },
                   child: Container(
